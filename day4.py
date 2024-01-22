@@ -21,11 +21,20 @@ def getSum(size, sum):
         while True:
             try:
                 element = float(input(f"Enter value #{i+1}: "))
-                sum += element
+                # If element is a float, it appends it to the list as is. Else, it'll be appended as an integer.
+                if element % 1 == 0.0:
+                    li.append(int(element))
+                    sum += element
+                else:
+                    li.append(element)
+                    sum += element
                 break
+
+            # If wrong datatype (String, etc.), it will prompt for the index value again
             except ValueError:
                 pass
     return int(sum) if sum % 1 == 0.0 else sum
 
 size = getSize()
-print("",f"Sum: {getSum(size, sum)}",sep="\n")
+sum = getSum(size, sum)
+print("",f"List: {li}",f"Sum: {sum}",sep="\n")
